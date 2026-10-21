@@ -1,0 +1,16 @@
+node_modules/
+dist/
+artifacts/
+.sahm-qa/
+downloads/
+*.part
+*.resume.json
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+*.pem
+!/test/fixtures/ftp/server-cert.pem
+!/test/fixtures/ftp/server-key.pem
+*.dmp

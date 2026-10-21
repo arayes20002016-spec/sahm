@@ -1,0 +1,118 @@
+{
+  "platform": "win32-x64",
+  "dependencies": [
+    {
+      "repository": "yt-dlp/yt-dlp",
+      "version": "2026.08.19",
+      "releaseUrl": "https://github.com/yt-dlp/yt-dlp/releases/tag/2026.08.19",
+      "archiveUrl": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp.exe",
+      "archiveSha256": "66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a",
+      "installed": [
+        {
+          "name": "yt-dlp.exe",
+          "sha256": "66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a",
+          "size": 17840399
+        }
+      ],
+      "licenses": [
+        {
+          "path": "licenses/yt-dlp-LICENSE.txt",
+          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+          "size": 1211,
+          "url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/2026.08.19/LICENSE"
+        },
+        {
+          "path": "licenses/yt-dlp-THIRD-PARTY-LICENSES.txt",
+          "sha256": "472aefe951c7db35e1657c1d13fd337140511ed6f2b329205105ad441c5a02b7",
+          "size": 243550,
+          "url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/2026.08.19/THIRD_PARTY_LICENSES.txt"
+        }
+      ]
+    },
+    {
+      "repository": "yt-dlp/FFmpeg-Builds",
+      "version": "autobuild-2026-10-17-20-33",
+      "releaseUrl": "https://github.com/yt-dlp/FFmpeg-Builds/releases/tag/autobuild-2026-10-17-20-33",
+      "archiveUrl": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-10-17-20-33/ffmpeg-N-127617-g94cba3150c-win64-gpl-shared.zip",
+      "archiveSha256": "07e57b95756c228744cae27c95b4a25b98e34ace10c7a9639db932216a19f04f",
+      "installed": [
+        {
+          "name": "ffmpeg.exe",
+          "sha256": "948c40d999621636276737801390f48ee613f903beb956cb9f21efa5f6f41a2a",
+          "size": 561152
+        },
+        {
+          "name": "ffprobe.exe",
+          "sha256": "c26fcf0fbb9c0e39cff1fdc446d306d007bcc1ed913c962e8b7c42aea42fa0bd",
+          "size": 236544
+        },
+        {
+          "name": "avcodec-63.dll",
+          "sha256": "79bc3a0fb56d47d7e0483fabf302d7736ad27755b352fddc4d40b161a2c0bea9",
+          "size": 119858688
+        },
+        {
+          "name": "avdevice-63.dll",
+          "sha256": "3ad11a676836dd446631c4e35c441d446fd9f7683c125c78653f6f6caec84d7b",
+          "size": 4948480
+        },
+        {
+          "name": "avfilter-12.dll",
+          "sha256": "b41929cb2ed91d8ddd8583ab61c35b82675264d4c450d9bae1a3d877e8c5ac85",
+          "size": 37502464
+        },
+        {
+          "name": "avformat-63.dll",
+          "sha256": "552b4f485a7047ff264563484faa7c2444f88bd8b7a6f361a8140d704116aeb0",
+          "size": 25979392
+        },
+        {
+          "name": "avutil-61.dll",
+          "sha256": "1431e5848a60f061a1f2e4d3a889f1c3c9a03f6e8fe3dc3d70b792964e19a8fe",
+          "size": 3038720
+        },
+        {
+          "name": "swresample-7.dll",
+          "sha256": "60981cd50eb4e9081c8043ace2b3a6ff15d486acb5a036d3e2b87e3d06c46dca",
+          "size": 739840
+        },
+        {
+          "name": "swscale-10.dll",
+          "sha256": "75a6cfc8f362179bf0c88751b61e37e07605da1ab6dd965f86e368ee44aadf8d",
+          "size": 2391552
+        }
+      ],
+      "licenses": [
+        {
+          "path": "licenses/ffmpeg/LICENSE.txt",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "size": 35147,
+          "archiveName": "LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "repository": "denoland/deno",
+      "version": "v2.9.7",
+      "releaseUrl": "https://github.com/denoland/deno/releases/tag/v2.9.7",
+      "archiveUrl": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip",
+      "archiveSha256": "a0c3101b4158d1dfb7d6a78a7bf0f3de80c96bb423c152beec8beb22786f2238",
+      "installed": [
+        {
+          "name": "deno.exe",
+          "sha256": "e020f3e232bd16e33768dee528e5983349c962952051ced0a5d58ad42f5d9b33",
+          "size": 97462048
+        }
+      ],
+      "licenses": [
+        {
+          "path": "licenses/deno-LICENSE.txt",
+          "sha256": "f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588",
+          "size": 1074,
+          "url": "https://raw.githubusercontent.com/denoland/deno/v2.9.7/LICENSE.md"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1
+}

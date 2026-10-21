@@ -1,0 +1,27 @@
+name: بلاغ عطل
+description: مشكلة قابلة لإعادة الإنتاج في سَهم
+body:
+  - type: input
+    id: version
+    attributes:
+      label: إصدار سَهم وWindows والمتصفح والإضافة
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: خطوات إعادة الإنتاج
+      description: استخدم رابطًا عامًا أو خادم اختبار. لا ترفق كلمة مرور أو Cookie أو رابطًا موقعًا.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: النتيجة المتوقعة والنتيجة الفعلية
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: رسالة الخطأ أو سجل منقح
+      description: احذف بيانات الحسابات والمسارات الشخصية. للثغرات الحساسة راجع SECURITY.md.

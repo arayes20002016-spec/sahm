@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "SAHM — Browser Integration" },
+  "extensionShortName": { "message": "SAHM" },
+  "extensionDescription": { "message": "Connect browser downloads to the free SAHM Windows app, with optional capture and a button for supported media." }
+}

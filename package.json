@@ -1,0 +1,81 @@
+{
+  "name": "sahm-download-manager",
+  "version": "0.25.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "i18n:build": "node scripts/i18n-build.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "download": "node src/cli.mjs",
+    "start": "electron .",
+    "pack": "node scripts/pack.mjs",
+    "icon": "node scripts/icon.mjs",
+    "smoke": "electron scripts/smoke.cjs",
+    "test:browsers": "node scripts/real-browser-tests.mjs",
+    "installer": "node scripts/installer.mjs",
+    "media:setup": "node scripts/media-dependencies.mjs",
+    "test:media-browsers": "node scripts/media-browser-tests.mjs",
+    "smoke:selection": "electron scripts/selection-smoke.cjs",
+    "smoke:queues": "electron scripts/queues-smoke.cjs",
+    "smoke:productivity": "electron scripts/productivity-smoke.cjs",
+    "smoke:advanced": "electron scripts/advanced-features-smoke.cjs",
+    "smoke:proxy-media": "node scripts/proxy-media-smoke.mjs",
+    "smoke:site": "electron scripts/site-mirror-smoke.cjs",
+    "verify:release": "node scripts/verify-release.mjs",
+    "smoke:policies": "electron scripts/policies-smoke.cjs",
+    "smoke:packaged-policies": "node scripts/packaged-policies-smoke.mjs",
+    "smoke:public-sync": "node scripts/public-sync-smoke.mjs",
+    "smoke:completion": "electron scripts/completion-columns-smoke.cjs",
+    "smoke:packaged-completion": "node scripts/packaged-completion-smoke.mjs",
+    "smoke:enterprise": "electron scripts/enterprise-smoke.cjs",
+    "smoke:packaged-enterprise": "node scripts/packaged-enterprise-smoke.mjs",
+    "smoke:site-session": "electron scripts/site-session-smoke.cjs",
+    "smoke:site-session-ui": "electron scripts/site-session-ui-smoke.cjs",
+    "smoke:packaged-site-session": "node scripts/packaged-site-session-smoke.mjs",
+    "smoke:site-routes": "electron scripts/site-routes-enterprise-smoke.cjs",
+    "smoke:packaged-site-routes": "node scripts/packaged-site-routes-smoke.mjs",
+    "media:verify": "node scripts/media-dependencies.mjs --verify",
+    "source:archive": "node scripts/export-source.mjs",
+    "check": "node scripts/check-project.mjs",
+    "smoke:upgrade": "electron scripts/upgrade-smoke.cjs",
+    "smoke:packaged-upgrade": "node scripts/packaged-upgrade-smoke.mjs",
+    "smoke:packaged-browsers": "node scripts/packaged-browser-downloads-smoke.mjs",
+    "smoke:auth-load": "node scripts/auth-load-smoke.mjs",
+    "extension:package": "node scripts/package-extension.mjs",
+    "smoke:download-windows": "electron scripts/download-windows-smoke.cjs",
+    "smoke:packaged-download-windows": "node scripts/packaged-download-windows-smoke.mjs",
+    "test:stress": "node scripts/download-stress.mjs",
+    "test:protocol-stress": "node scripts/protocol-retry-stress.mjs",
+    "smoke:network-retry": "electron scripts/network-retry-ui-smoke.cjs",
+    "smoke:media-options": "electron scripts/media-options-smoke.cjs",
+    "smoke:i18n": "electron scripts/i18n-smoke.cjs --source-root .",
+    "extension:status": "node scripts/extension-store-status.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@electron/asar": "4.3.1",
+    "@electron/packager": "^20.3.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "7zip-bin": "5.2.0",
+    "app-builder-lib": "26.17.0",
+    "electron": "^44.9.0"
+  },
+  "overrides": {
+    "@electron/asar": "$@electron/asar",
+    "@electron/get": {
+      "global-agent": "4.1.3"
+    }
+  },
+  "main": "electron/main.cjs",
+  "description": "Free, open-source Arabic and English Windows download manager",
+  "author": "SAHM",
+  "dependencies": {
+    "pac-resolver": "^9.0.1",
+    "parse5": "^8.0.1",
+    "quickjs-wasi": "^2.2.0",
+    "undici": "^8.12.2"
+  },
+  "license": "GPL-3.0-or-later"
+}

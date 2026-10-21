@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><script src="i18n-data.js"></script><script src="i18n-core.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="سَهم">سَهم</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header><strong data-i18n="سَهم">سَهم</strong><span><span data-i18n="تكامل المتصفح">تكامل المتصفح</span> <b id="version" dir="ltr"></b></span></header>
+  <label for="language"><span data-i18n="لغة الواجهة">لغة الواجهة</span> <select id="language"><option value="ar" data-i18n="العربية">العربية</option><option value="en" data-i18n="الإنجليزية">English</option></select></label>
+  <p id="connection" role="status" data-i18n="جارٍ فحص اتصال التطبيق…">جارٍ فحص اتصال التطبيق…</p>
+  <label class="option"><input id="enabled" type="checkbox"> <span data-i18n="التقاط التنزيلات تلقائيًا">التقاط التنزيلات تلقائيًا</span></label>
+  <p class="hint" data-i18n="اترك سَهم مفتوحًا، وفعّل الالتقاط داخل التطبيق أيضًا.">اترك سَهم مفتوحًا، وفعّل الالتقاط داخل التطبيق أيضًا.</p>
+  <label class="option"><input id="showVideoButton" type="checkbox"> <span data-i18n="إظهار زر التنزيل على الفيديو">إظهار زر التنزيل على الفيديو</span></label>
+  <p class="hint" data-i18n="الفيديو المباشر وYouTube. اختر الزر فوق المشغّل لإرسال الفيديو إلى سَهم.">الفيديو المباشر وYouTube. اختر الزر فوق المشغّل لإرسال الفيديو إلى سَهم.</p>
+  <label class="panel-mode" for="videoPanelMode"><span data-i18n="حجم زر الفيديو">حجم زر الفيديو</span> <select id="videoPanelMode"><option value="full" data-i18n="كامل مع النص">كامل مع النص</option><option value="mini" data-i18n="مصغّر">مصغّر</option></select></label>
+  <p id="videoStatus" class="hint" role="status" data-i18n="جارٍ فحص زر الفيديو في الصفحة الحالية…">جارٍ فحص زر الفيديو في الصفحة الحالية…</p>
+  <div class="video-actions"><button id="checkVideo" type="button" data-i18n="فحص زر الفيديو">فحص زر الفيديو</button><button id="reloadPage" type="button" hidden="" data-i18n="تحديث صفحة الفيديو">تحديث صفحة الفيديو</button></div>
+  <button id="listMedia" type="button" data-i18n="عرض وسائط الصفحة">عرض وسائط الصفحة</button>
+  <div id="pageMedia" hidden="" role="group" aria-label="الوسائط المرصودة في الصفحة" data-i18n-aria-label="الوسائط المرصودة في الصفحة"></div>
+  <label class="option"><input id="allowSession" type="checkbox"> <span data-i18n="تنزيل الملفات التي تحتاج إلى جلسة دخول">تنزيل الملفات التي تحتاج إلى جلسة دخول</span></label>
+  <p class="hint" data-i18n="يرسل ملفات الارتباط وترويسات الجلسة اللازمة إلى سَهم محليًا. يحتفظ بها في الذاكرة فقط حتى نهاية المهمة أو إغلاق التطبيق.">يرسل ملفات الارتباط وترويسات الجلسة اللازمة إلى سَهم محليًا. يحتفظ بها في الذاكرة فقط حتى نهاية المهمة أو إغلاق التطبيق.</p>
+  <label class="option"><input id="allowPost" type="checkbox"> <span data-i18n="إضافة تنزيلات POST بعد اكتمالها">إضافة تنزيلات POST بعد اكتمالها</span></label>
+  <p class="hint" data-i18n="يكمل المتصفح تنزيل الملف، ثم يظهر في سَهم في موقعه نفسه. لا يعيد سَهم إرسال الطلب. أثناء التنزيل استخدم المتصفح؛ حصة سَهم لا تشمل هذا النقل.">يكمل المتصفح تنزيل الملف، ثم يظهر في سَهم في موقعه نفسه. لا يعيد سَهم إرسال الطلب. أثناء التنزيل استخدم المتصفح؛ حصة سَهم لا تشمل هذا النقل.</p>
+  <button id="bypass" type="button" data-i18n="تنزيل الملف التالي في المتصفح">تنزيل الملف التالي في المتصفح</button>
+  <label for="excludedDomains" data-i18n="مواقع مستثناة">مواقع مستثناة</label>
+  <textarea id="excludedDomains" rows="3" dir="ltr" spellcheck="false" placeholder="example.com
+files.example.org"></textarea>
+  <p class="hint" data-i18n="اسم نطاق في كل سطر، ويشمل النطاقات الفرعية.">اسم نطاق في كل سطر، ويشمل النطاقات الفرعية.</p>
+  <button id="save" type="button" data-i18n="حفظ الاستثناءات">حفظ الاستثناءات</button>
+  <p id="result" role="status"></p>
+  <footer data-i18n="من قائمة الرابط اختر «تنزيل الرابط باستخدام سَهم» للإرسال اليدوي.">من قائمة الرابط اختر «تنزيل الرابط باستخدام سَهم» للإرسال اليدوي.</footer>
+  <script src="media-targets.js"></script>
+  <script type="module" src="popup.mjs"></script>
+
+
+</body></html>

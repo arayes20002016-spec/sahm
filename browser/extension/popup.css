@@ -1,0 +1,33 @@
+:root { font-family: "Segoe UI", Tahoma, sans-serif; font-size: 13px; color: #20252b; background: #f9f9f9; color-scheme: light; }
+* { box-sizing: border-box; }
+body { width: 320px; margin: 0; padding: 18px; }
+header { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #dedfe2; }
+header strong { font-size: 25px; color: #146654; }
+header span { color: #626972; }
+header b { font-size: 12px; font-weight: 400; }
+p { margin: 12px 0; line-height: 1.65; }
+.option { display: flex; align-items: center; gap: 7px; font-weight: 600; }
+input { accent-color: #176a56; }
+.hint, footer { color: #666e76; font-size: 12px; line-height: 1.65; }
+button, textarea, select { font: inherit; border: 1px solid #c8ccd0; border-radius: 4px; background: white; color: inherit; }
+button { width: 100%; min-height: 34px; padding: 5px 10px; cursor: pointer; margin-bottom: 14px; }
+button:hover { background: #f0f2f3; }
+button:active { background: #e4e8eb; }
+button:focus-visible, textarea:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #176a56; outline-offset: 2px; }
+.panel-mode { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+select { min-height: 30px; padding: 3px 6px; }
+#pageMedia { max-height: 220px; overflow-y: auto; margin-bottom: 12px; }
+#pageMedia button { text-align: start; overflow-wrap: anywhere; font-size: 12px; margin-bottom: 5px; }
+.video-actions { display: flex; gap: 6px; }
+.video-actions button { width: auto; flex: 1; font-size: 12px; margin-bottom: 12px; }
+[hidden] { display: none !important; }
+textarea { width: 100%; margin-top: 6px; padding: 8px; resize: vertical; }
+#result { color: #146654; min-height: 20px; margin-top: 0; }
+footer { border-top: 1px solid #dedfe2; padding-top: 10px; }
+
+:root { --sahm-direction: rtl; }
+body, body *, input, textarea, select, option { direction: var(--sahm-direction); }
+input:not([type=checkbox]):not([type=radio]), textarea, select { text-align: start; unicode-bidi: isolate; }
+
+input[type='time'], input[type='date'], input[type='datetime-local'] { direction: var(--sahm-direction) !important; }
+input::-webkit-datetime-edit { direction: inherit; text-align: start; }

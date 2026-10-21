@@ -1,0 +1,36 @@
+name: Windows checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: windows-2025
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - name: Install locked dependencies without deprecated tools
+        shell: pwsh
+        run: |
+          npm ci 2>&1 | Tee-Object -FilePath npm-ci.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (Select-String -Path npm-ci.log -Pattern 'npm warn (deprecated|allow-scripts)') {
+            throw 'Dependency installation warnings require review.'
+          }
+      - run: npm audit --audit-level=moderate
+      - run: npm run check
+      - run: npm run media:setup
+      - run: npm run media:verify
+      - run: npm test
+      - run: npm run source:archive

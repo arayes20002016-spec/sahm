@@ -1,0 +1,77 @@
+name: Build trial release
+on:
+  workflow_dispatch:
+    inputs:
+      stress-seconds:
+        description: Download stress duration in seconds
+        type: choice
+        default: '1800'
+        options: ['180', '1800', '3600']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2025
+    timeout-minutes: 150
+    env:
+      ELECTRON_BUILDER_COMPRESSION_LEVEL: '3'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - name: Install locked dependencies without deprecated tools
+        shell: pwsh
+        run: |
+          npm ci 2>&1 | Tee-Object -FilePath npm-ci.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (Select-String -Path npm-ci.log -Pattern 'npm warn (deprecated|allow-scripts)') {
+            throw 'Dependency installation warnings require review.'
+          }
+      - run: npm audit --audit-level=moderate
+      - run: npm run check
+      - run: npm run media:setup
+      - run: npm run media:verify
+      - run: npm test
+      - run: npm run pack
+      - name: Network recovery in desktop windows
+        shell: pwsh
+        run: |
+          $releaseVersion = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $portableDirectory = (Resolve-Path "dist/$releaseVersion/SAHM-win32-x64").Path
+          npm run smoke:network-retry -- --source-root "$portableDirectory/resources/app.asar" --result-directory "dist/$releaseVersion/validation/network-ui"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Packaged download stress and crash recovery
+        shell: pwsh
+        run: |
+          $releaseVersion = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $portableDirectory = (Resolve-Path "dist/$releaseVersion/SAHM-win32-x64").Path
+          npm run test:stress -- --duration-seconds ${{ inputs.stress-seconds }} --application-root "$portableDirectory/resources/app.asar" --runtime "$portableDirectory/SAHM.exe" --result-directory "dist/$releaseVersion/validation/download-stress"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: npm run smoke:packaged-download-windows -- --rounds 3 --parallel 2 --ui-delay-ms 6500
+      - name: FTP and media automatic recovery with decoded content checks
+        shell: pwsh
+        run: |
+          $releaseVersion = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $portableDirectory = (Resolve-Path "dist/$releaseVersion/SAHM-win32-x64").Path
+          npm run test:protocol-stress -- --duration-seconds ${{ inputs.stress-seconds }} --application-root "$portableDirectory/resources/app.asar" --runtime "$portableDirectory/SAHM.exe" --media-runtime "$portableDirectory/resources/media-runtime" --result-directory "dist/$releaseVersion/validation/protocol-retry"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: npm run smoke:packaged-site-routes
+      - run: npm run installer
+      - run: npm run verify:release
+      - run: npm run source:archive
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sahm-trial-release
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            dist/*/SAHM-Setup-*.exe
+            dist/*/ابدأ-هنا.txt
+            dist/*/SHA256SUMS.txt
+            dist/*/validation/**
+            dist/source/*.tar.gz
+            dist/source/*.sha256
