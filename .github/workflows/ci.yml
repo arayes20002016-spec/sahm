@@ -33,4 +33,5 @@ jobs:
       - run: npm run media:setup
       - run: npm run media:verify
       - run: npm test
+        timeout-minutes: 10
       - run: npm run source:archive

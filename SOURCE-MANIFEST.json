@@ -24,8 +24,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 1144,
-      "sha256": "48a68367f3ef03bc37c6510386931cb3c8824ea8671fa39cadf822c3353c4280"
+      "bytes": 1172,
+      "sha256": "2580945042f6ab827b262ee68fcc0c1edac224270870fd2954982838dba5ec31"
     },
     {
       "path": ".gitignore",
@@ -434,8 +434,8 @@
     },
     {
       "path": "scripts/browser-setup-smoke.cjs",
-      "bytes": 5141,
-      "sha256": "b2145a68c183bd4ab1e2e0e65b9f939ee9c9b70f796fc50104411f38a2ec689e"
+      "bytes": 5651,
+      "sha256": "e8e4390378c5b16effca94f9a3e875fc36e71bcf55d5e996757fe1ea558dd917"
     },
     {
       "path": "scripts/check-project.mjs",
@@ -1099,8 +1099,8 @@
     },
     {
       "path": "test/browser-setup-startup.test.mjs",
-      "bytes": 1630,
-      "sha256": "040300d6e79d2871fc2f157aeb053928a053b08075b055215c6fbca207572940"
+      "bytes": 2058,
+      "sha256": "a7e4ee9d5aefee20a6a326cebcab262670a67c8130f75e94e0af8061a633ac1d"
     },
     {
       "path": "test/browser.test.mjs",

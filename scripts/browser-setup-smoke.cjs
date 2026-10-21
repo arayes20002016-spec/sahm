@@ -3,6 +3,7 @@ const fs=require('node:fs/promises'),path=require('node:path'),assert=require('n
 const application=path.resolve(process.env.SAHM_APPLICATION_ROOT || '.');
 const output=path.resolve(process.env.SAHM_BROWSER_SETUP_RESULT || 'artifacts/browser-setup-ui');
 const workspace=path.resolve(process.env.SAHM_BROWSER_SETUP_WORKSPACE || path.join(output,'workspace'));
+const captureScreenshots=process.env.SAHM_BROWSER_SETUP_CAPTURE!=='0';
 let main,finished=false;const prompts=[],errors=[];
 const childProcess=require('node:child_process'), originalExecFile=childProcess.execFile;
 const {promisify}=require('node:util'), runExecFile=promisify(originalExecFile);
@@ -19,8 +20,13 @@ require('node:module').syncBuiltinESMExports();
 const delay=ms=>new Promise(r=>setTimeout(r,ms));
 const evaluate=code=>main.webContents.executeJavaScript(code);
 async function wait(check,label){const end=Date.now()+30000;while(Date.now()<end){try{if(await check())return;}catch{}await delay(100);}throw new Error('Timeout: '+label);}
-async function finish(error){if(finished)return;finished=true;await fs.mkdir(output,{recursive:true});await fs.writeFile(path.join(output,'result.json'),JSON.stringify({ok:!error,error:error?.stack,prompts,errors,registryWriteAttempts,applicationSha256:application.endsWith('.asar')?require('node:crypto').createHash('sha256').update(require('original-fs').readFileSync(application)).digest('hex'):null,storeInstallTested:false,unpublishedActionsRemainDisabled:true},null,2));app.once('will-quit',()=>app.exit(error?1:0));app.quit();}
+async function finish(error){if(finished)return;finished=true;await fs.mkdir(output,{recursive:true});await fs.writeFile(path.join(output,'result.json'),JSON.stringify({ok:!error,error:error?.stack,prompts,errors,registryWriteAttempts,screenshotsCaptured:captureScreenshots,applicationSha256:application.endsWith('.asar')?require('node:crypto').createHash('sha256').update(require('original-fs').readFileSync(application)).digest('hex'):null,storeInstallTested:false,unpublishedActionsRemainDisabled:true},null,2));app.once('will-quit',()=>app.exit(error?1:0));setTimeout(()=>app.exit(error?1:0),5000).unref();app.quit();}
 app.disableHardwareAcceleration();clipboard.readText=async()=>'';app.setLoginItemSettings=()=>{throw new Error('Unexpected startup write');};dialog.showMessageBox=async(_window,options)=>{prompts.push({type:options.type,message:options.message});return {response:0};};
+dialog.showErrorBox=(title,message)=>{
+ const syncFs=require('node:fs');syncFs.mkdirSync(output,{recursive:true});
+ syncFs.writeFileSync(path.join(output,'result.json'),JSON.stringify({ok:false,error:String(message),title:String(title),prompts,errors,registryWriteAttempts},null,2));
+ app.exit(1);
+};
 (async()=>{
  await fs.mkdir(workspace,{recursive:true});await fs.mkdir(output,{recursive:true});app.setPath('appData',workspace);app.setPath('userData',path.join(workspace,'profile'));app.setPath('downloads',path.join(workspace,'files'));
  process.argv.push('--setup-browser');
@@ -44,9 +50,9 @@ app.disableHardwareAcceleration();clipboard.readText=async()=>'';app.setLoginIte
   assert.equal(await evaluate('window.sahm.integration("install-edge").then(()=>false,()=>true)'),true);
   assert.equal((await evaluate('window.sahm.settings()')).browser.registered,false);
   for(const theme of ['light','dark']){
-   await evaluate('window.sahm.preferences({theme:'+JSON.stringify(theme)+'})');main.setSize(theme==='light'?1100:900,theme==='light'?800:680);main.showInactive();await delay(150);
+   await evaluate('window.sahm.preferences({theme:'+JSON.stringify(theme)+'})');main.setSize(theme==='light'?1100:900,theme==='light'?800:680);if(captureScreenshots)main.showInactive();await delay(150);
    assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true);
-   await fs.writeFile(path.join(output,language+'-'+theme+'.png'),(await main.webContents.capturePage()).toPNG());
+   if(captureScreenshots)await fs.writeFile(path.join(output,language+'-'+theme+'.png'),(await main.webContents.capturePage()).toPNG());
   }
  }
  assert.equal(prompts.length,2);assert.equal(errors.length,0);assert.equal(registryWriteAttempts,0);await finish();
