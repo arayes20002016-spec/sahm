@@ -309,8 +309,8 @@
     },
     {
       "path": "docs/extension-store/reviewer-notes.en.md",
-      "bytes": 3318,
-      "sha256": "4cda12febb401b6aa405461ba3328dcc46c398ada30691335353d86a8243a020"
+      "bytes": 3451,
+      "sha256": "c2145ca66c1fb84cea3fc81abe286f5412cce907c69a8e14b8d87810d508326f"
     },
     {
       "path": "docs/index.html",
@@ -364,8 +364,8 @@
     },
     {
       "path": "electron/main.cjs",
-      "bytes": 20238,
-      "sha256": "7709226ec46cfe5fe14568b9222edd960e4fc73ba20670089d54d4b1f894dab2"
+      "bytes": 20316,
+      "sha256": "aefea316b530ae741a1d050c42615d3723ca9618cbaf38a3f364270195f3ac3b"
     },
     {
       "path": "electron/preload.cjs",
@@ -426,6 +426,11 @@
       "path": "scripts/auth-load-smoke.mjs",
       "bytes": 3677,
       "sha256": "2fee592beb0cff1f3f5b026f90e2146f76ffbfdcbd8812546112b7751b6b5f91"
+    },
+    {
+      "path": "scripts/browser-setup-smoke.cjs",
+      "bytes": 5141,
+      "sha256": "b2145a68c183bd4ab1e2e0e65b9f939ee9c9b70f796fc50104411f38a2ec689e"
     },
     {
       "path": "scripts/check-project.mjs",
@@ -1086,6 +1091,11 @@
       "path": "test/browser-session.test.mjs",
       "bytes": 8844,
       "sha256": "88a9a549b13325263fd6ce0921d42cf76493d171fd448c6d977d9bfab80fb343"
+    },
+    {
+      "path": "test/browser-setup-startup.test.mjs",
+      "bytes": 1609,
+      "sha256": "04335e44d3ad5f60694216ec480f0877a5171a4143d701ed522f0342387903f2"
     },
     {
       "path": "test/browser.test.mjs",

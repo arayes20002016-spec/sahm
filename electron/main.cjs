@@ -162,6 +162,7 @@ app.whenReady().then(async () => {
   window = new BrowserWindow({ width: 1240, height: 820, minWidth: 820, minHeight: 600, show: !process.argv.includes('--background'), title: __sahmT("سَهم — SAHM Download Manager"), icon: path.join(__dirname, '../assets/sahm.png'), backgroundColor: nativeTheme.shouldUseDarkColors ? '#202020' : '#f3f3f3', webPreferences: { preload: path.join(__dirname, 'preload.cjs'), contextIsolation: true, nodeIntegration: false, sandbox: true } });
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
   window.webContents.on('will-navigate', event => event.preventDefault());
+  window.webContents.on('did-stop-loading', () => { void setupBrowser(); });
   tray = new Tray(nativeImage.createFromPath(path.join(__dirname, '../assets/sahm.ico')));
   tray.on('click', showWindow);
   tray.on('double-click', showWindow);

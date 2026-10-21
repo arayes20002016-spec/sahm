@@ -1,6 +1,6 @@
 # Certification notes — Edge submission draft
 
-SAHM is a companion to a Windows x64 desktop download manager. Test with the installer matching the extension version. The publisher must provide a publicly accessible app download page and privacy policy before submission. These URLs are not yet configured in this repository.
+SAHM is a companion to a Windows x64 desktop download manager. Test with the installer matching the extension version. Source and support are available at https://github.com/arayes20002016-spec/sahm. The privacy page is https://arayes20002016-spec.github.io/sahm/privacy.html. The trial download is published under the v0.25.0 release. Check that these pages and the installer are accessible before submitting.
 
 After installing the desktop app, open Browser integration and register the local connection. For a store build, the app must include the actual Edge extension ID in browser/store-release.json so the native host explicitly allows that origin. The development ID differs from the store ID. Do not use a production installer that only trusts the development ID for certification.
 
