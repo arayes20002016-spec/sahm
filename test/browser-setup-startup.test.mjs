@@ -13,7 +13,7 @@ test('unpublished installer setup survives initial loading and a second-instance
   t.after(() => rm(directory, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }));
   const root = fileURLToPath(new URL('../', import.meta.url));
   const environment = { ...process.env, SAHM_APPLICATION_ROOT: root, SAHM_BROWSER_SETUP_RESULT: directory, SAHM_BROWSER_SETUP_WORKSPACE: join(directory, 'workspace') };
-  for (const key of ['ELECTRON_RUN_AS_NODE', 'SAHM_SCREENSHOT', 'RAFID_SCREENSHOT']) delete environment[key];
+  for (const key of ['ELECTRON_RUN_AS_NODE', 'NODE_TEST_CONTEXT', 'SAHM_SCREENSHOT', 'RAFID_SCREENSHOT']) delete environment[key];
   await promisify(execFile)(join(root, 'node_modules/electron/dist/electron.exe'), [join(root, 'scripts/browser-setup-smoke.cjs')], { env: environment, windowsHide: true, timeout: 160000, maxBuffer: 256 * 1024 });
   const report = JSON.parse(await readFile(join(directory, 'result.json'), 'utf8'));
   assert.equal(report.ok, true, report.error); assert.equal(report.prompts.length, 2);

@@ -1094,8 +1094,8 @@
     },
     {
       "path": "test/browser-setup-startup.test.mjs",
-      "bytes": 1609,
-      "sha256": "04335e44d3ad5f60694216ec480f0877a5171a4143d701ed522f0342387903f2"
+      "bytes": 1630,
+      "sha256": "040300d6e79d2871fc2f157aeb053928a053b08075b055215c6fbca207572940"
     },
     {
       "path": "test/browser.test.mjs",
