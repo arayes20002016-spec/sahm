@@ -5,6 +5,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { STORE_RELEASE } from '../browser/distribution.mjs';
 
 test('unpublished installer setup survives initial loading and a second-instance request during renderer reload', { skip: process.platform !== 'win32' || Object.values(STORE_RELEASE).some(Boolean), timeout: 180000 }, async t => {
@@ -15,7 +16,7 @@ test('unpublished installer setup survives initial loading and a second-instance
   for (const key of ['ELECTRON_RUN_AS_NODE', 'NODE_TEST_CONTEXT', 'SAHM_SCREENSHOT', 'RAFID_SCREENSHOT']) delete environment[key];
   const code = await new Promise((resolve, reject) => {
     // Wait for the app process, not pipes inherited by Chromium subprocesses.
-    const child = spawn(join(root, 'node_modules/electron/dist/electron.exe'), [join(root, 'scripts/browser-setup-smoke.cjs')], { env: environment, windowsHide: true, stdio: 'ignore' });
+    const child = spawn(createRequire(import.meta.url)('electron'), [join(root, 'scripts/browser-setup-smoke.cjs')], { env: environment, windowsHide: true, stdio: 'ignore' });
     const timer = setTimeout(() => { child.kill(); reject(new Error('Browser setup app exceeded its execution limit')); }, 160000);
     child.once('error', error => { clearTimeout(timer); reject(error); });
     child.once('exit', status => { clearTimeout(timer); resolve(status); });

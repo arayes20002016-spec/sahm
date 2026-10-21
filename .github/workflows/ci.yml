@@ -32,6 +32,6 @@ jobs:
       - run: npm run check
       - run: npm run media:setup
       - run: npm run media:verify
-      - run: npm test
+      - run: npm test -- --test-concurrency=2 --test-reporter=tap
         timeout-minutes: 10
       - run: npm run source:archive

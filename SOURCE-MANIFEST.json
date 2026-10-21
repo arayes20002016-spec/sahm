@@ -24,8 +24,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 1172,
-      "sha256": "2580945042f6ab827b262ee68fcc0c1edac224270870fd2954982838dba5ec31"
+      "bytes": 1216,
+      "sha256": "0f8ff2176af38e9f673a01a0fd375cbc264d191d9a2cd66b342e01b0c03af512"
     },
     {
       "path": ".gitignore",
@@ -704,8 +704,8 @@
     },
     {
       "path": "scripts/run-tests.mjs",
-      "bytes": 1236,
-      "sha256": "50570e5663d8dbbfe492c1491d25191e87c8ca4a833c56fb385fb852a7b60c4b"
+      "bytes": 1446,
+      "sha256": "07efdbe7de3b632a9509f280b0766c83fed2b2dc544e638b29cfcba8457bb2b5"
     },
     {
       "path": "scripts/selection-smoke.cjs",
@@ -1099,8 +1099,8 @@
     },
     {
       "path": "test/browser-setup-startup.test.mjs",
-      "bytes": 2058,
-      "sha256": "a7e4ee9d5aefee20a6a326cebcab262670a67c8130f75e94e0af8061a633ac1d"
+      "bytes": 2092,
+      "sha256": "a30be29d7f62fd62b75b97d66d948738628593055cdc06fac6665c3cc54430c2"
     },
     {
       "path": "test/browser.test.mjs",
@@ -1529,8 +1529,8 @@
     },
     {
       "path": "test/site-schedules.test.mjs",
-      "bytes": 14671,
-      "sha256": "118688a3ead79f0d35105d291006d330afe06e0efcff880ba843b3ca04bbd0c7"
+      "bytes": 14696,
+      "sha256": "d14db11bd85c8e42396fe1050ecf135cc3d2ba5743807188816efadc4fcee712"
     },
     {
       "path": "test/stream-media.test.mjs",

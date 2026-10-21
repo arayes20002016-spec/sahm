@@ -2,12 +2,15 @@ import { mkdtemp, rm, realpath, lstat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve } from 'node:path';
 import { spawn } from 'node:child_process';
+import { createRequire } from 'node:module';
 
 // All test-created TEMP files belong to this one workspace, even after a failing test.
 const parent = await realpath(process.env.SAHM_QA_ROOT || tmpdir());
 const directory = await mkdtemp(join(parent, 'sahm-test-run-'));
 let code = 1;
 try {
+  // Electron downloads its binary lazily. Resolve it once before test workers race.
+  if (process.platform === 'win32') createRequire(import.meta.url)('electron');
   const args = process.argv.slice(2);
   const concurrency = args.some(value => value.startsWith('--test-concurrency')) ? [] : ['--test-concurrency=4'];
   code = await new Promise((accept, reject) => {

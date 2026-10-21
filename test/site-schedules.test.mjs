@@ -37,7 +37,7 @@ async function fixture(t, { quota = false, privateSession = false } = {}) {
     async createRunner() { return { fetch, async close() {} }; }
   } : undefined;
   const service = await new SiteCopies(directory, directory, { now: () => state.now, quota: ledger, fetchImpl: ledger ? ledger.wrapFetch(fetch) : fetch, browserService }).init();
-  t.after(async () => { state.release?.(); await service.close(); server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); });
+  t.after(async () => { state.release?.(); const closing = service.close(); server.closeAllConnections(); await closing; await new Promise(resolve => server.close(resolve)); });
   const add = schedule => service.add({ url, options: { respectRobots: false }, ...(privateSession ? { sessionId: 'runtime-session' } : {}), ...(schedule === null ? {} : { schedule: schedule || { enabled: true, intervalMinutes: 1 } }) });
   const idle = async id => waitFor(() => !service.active.has(id) && service.jobs.find(job => job.id === id)?.state !== 'queued');
   return { directory, state, server, service, ledger, url, add, idle };
