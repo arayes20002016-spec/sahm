@@ -4,7 +4,7 @@ import { lstat, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const directories = ['locales', 'src', 'electron', 'ui', 'browser', 'assets', 'build', 'test', 'scripts', 'docs', '.github'];
-const rootFiles = ['package.json', 'package-lock.json', 'media-runtime.lock.json', 'LICENSE', 'README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.npmrc'];
+const rootFiles = ['package.json', 'package-lock.json', 'media-runtime.lock.json', 'LICENSE', 'README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'THIRD_PARTY_NOTICES.md', '.gitattributes', '.gitignore', '.npmrc'];
 const publicTestCertificates = new Map([
   ['test/fixtures/ftp/server-cert.pem', 'ebb823d844e54345edf8bb0c02057910c5d0fa6a1f1bad1aa218cf0ef7ea10dc'],
   ['test/fixtures/ftp/server-key.pem', '61bc6fdc681ff3512becae6b64cf39dc2dafe4c4fee3ce77d5608e5280cc6a2b'],

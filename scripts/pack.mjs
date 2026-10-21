@@ -14,5 +14,5 @@ await verifyRuntime(resolve('artifacts/media-runtime'), runtimeLock);
 const destination = process.env.SAHM_PACK_DIRECTORY || process.env.SAHM_RELEASE_DIRECTORY;
 const output = destination ? resolve(destination) : `dist/${version}`;
 const temporary = await prepareBuildStorage({ output });
-const paths = await packager({ dir: '.', name: 'SAHM', appBundleId: 'com.sahm.downloadmanager', appCopyright: 'SAHM', icon: 'assets/sahm.ico', platform: 'win32', arch: 'x64', out: output, tmpdir: temporary, overwrite: true, extraResource: ['browser', 'artifacts/media-runtime'], ignore: /^\/(?:SOURCE-MANIFEST\.json$|(?:artifacts|research|test|dist|downloads|scripts|build|docs|\.github|\.impeccable|\.sahm-qa|\.git)(?:\/|$))/ });
+const paths = await packager({ dir: '.', name: 'SAHM', appBundleId: 'com.sahm.downloadmanager', appCopyright: 'SAHM', icon: 'assets/sahm.ico', platform: 'win32', arch: 'x64', out: output, tmpdir: temporary, overwrite: true, extraResource: ['browser', 'artifacts/media-runtime'], ignore: /^\/(?:SOURCE-MANIFEST\.json$|\.gitattributes$|(?:artifacts|research|test|dist|downloads|scripts|build|docs|\.github|\.impeccable|\.sahm-qa|\.git)(?:\/|$))/ });
 console.log(paths.join('\n'));

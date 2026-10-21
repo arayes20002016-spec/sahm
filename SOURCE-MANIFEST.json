@@ -3,6 +3,11 @@
   "license": "GPL-3.0-or-later",
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 84,
+      "sha256": "831965a6908c35bd0e8f6d4848970baa02d04b1b38b47e5ab34aad188441c986"
+    },
+    {
       "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
       "bytes": 990,
       "sha256": "308e338b27290857495b8aea7cac70ffd98885de782367ec1ad3336178e5fd72"
@@ -539,8 +544,8 @@
     },
     {
       "path": "scripts/lib/source-files.mjs",
-      "bytes": 1859,
-      "sha256": "76df835ac7e94c0550125d1277d5d2b6bef40a8787ac61d96e38ca3c48bde9bf"
+      "bytes": 1877,
+      "sha256": "38e0f86c5c805665e3934f2948d1f755d667bee2942a8760c757f54560f8ac76"
     },
     {
       "path": "scripts/lib/stress-download-fixture.mjs",
@@ -579,8 +584,8 @@
     },
     {
       "path": "scripts/pack.mjs",
-      "bytes": 1626,
-      "sha256": "865ca33119a3da7e8b20b0f0d9a011bf6393ed977f97cbead268de51ee2fdbe0"
+      "bytes": 1643,
+      "sha256": "bbf272711ec5b0ef6c6726bd37b60394278d3c1b227c52760a1ba237b603e53e"
     },
     {
       "path": "scripts/package-extension.mjs",
